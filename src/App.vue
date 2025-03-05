@@ -4,7 +4,7 @@ import NavBar from "@/components/NavBar.vue";
 import {ref} from "vue";
 
 const navigation = ref([
-    { name: 'Home', href: '/#home'},
+    { name: 'Home', href: '/'},
     { name: 'About', href: '/#about'},
     { name: 'Skills', href: '/#skills'},
     { name: 'Projects', href: '/#projects'},
@@ -39,7 +39,7 @@ const ctaButton = ref({
   <RouterView />
   </body>
   <footer class="text-center py-6 bg-gray-800" v-fade-in>
-    <p class="text-gray-400">&copy; 2025 Luke Ertzberger. All rights reserved. Website design by <a href="https://triunecreative.com" target="_blank"><u>Triune Creative</u></a></p>
+    <p class="text-gray-400">&copy; 2025 Luke Ertzberger. All rights reserved. <a href="https://github.com/lsecyber/luke-ertzberger-website" target="_blank"><u>Source Code</u></a></p>
   </footer>
   </html>
 

@@ -201,9 +201,10 @@ const openSkillsModal = (skill) => {
 
 <template>
   <main class="bg-gray-900 text-white">
+    <div id="home"><!-- So it will jump to here not to the hero below --></div>
 
     <!-- Hero Section -->
-    <section class="text-center py-20" id="home">
+    <section class="text-center py-20">
       <h2 class="text-4xl font-bold font-heading" v-fade-in>LUKE ERTZBERGER</h2>
       <p class="text-gray-400 mt-4" v-fade-in>Software Developer | Web Designer | Problem Solver</p>
       <div class="flex justify-center mt-6" v-fade-in>
@@ -246,8 +247,8 @@ const openSkillsModal = (skill) => {
           solutions. With expertise in Python, JavaScript, and full-stack development, I specialize in creating
           efficient
           web applications, backend systems, and AI-driven solutions. Through my work at
-          <a href="https://triunecreative.com"><u>Triune Creative</u></a>, I’ve led web design and media projects for
-          nonprofits and small businesses, focusing on user-friendly, client-centric
+          <a href="https://triunecreative.com" target="_blank"><u>Triune Creative</u></a>, I’ve led web design
+          and media projects for nonprofits and small businesses, focusing on user-friendly, client-centric
           designs. My development experience also includes work at various startups engineering AI-enhanced workflows,
           optimizing ERP systems, and leveraging cloud infrastructure to improve software performance. I'm currently a
           Senior pursuing a B.S. in Computer Science at Regent University, where I maintain a 4.0 GPA and serve on the
@@ -257,9 +258,9 @@ const openSkillsModal = (skill) => {
           which gave me the flexibility to develop a deep love for learning and problem-solving. Music is also a
           significant part of my life - I’ve played piano since I was four and currently perform at weddings and
           retirement communities. Currently, I serve as an intern at
-          <a href="https://northside.church"><u>Northside Church</u></a>, where I apply my technical and creative skills
-          in a ministry setting. In my free time, I enjoy reading, particularly books on apologetics, allegories, and
-          historical fiction.
+          <a href="https://northside.church" target="_blank"><u>Northside Church</u></a>, where I apply my technical
+          and creative skills in a ministry setting. In my free time, I enjoy reading, particularly books on
+          apologetics, allegories, and historical fiction.
         </p>
       </div>
     </section>
