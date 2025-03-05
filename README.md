@@ -1,14 +1,6 @@
 # luke-ertzberger-website
 
-This template should help get you started developing with Vue 3 in Vite.
-
-## Recommended IDE Setup
-
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
-
-## Customize configuration
-
-See [Vite Configuration Reference](https://vite.dev/config/).
+I built a sleek, responsive portfolio using Vue.js and Tailwind CSS to showcase my work in full-stack development and UI/UX design. The site is optimized for performance, ensuring a smooth browsing experience for potential clients and employers. This will remain live at [https://lukeertzberger.com](https://lukeertzberger.com) for the foreseeable future.
 
 ## Project Setup
 
