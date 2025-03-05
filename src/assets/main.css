@@ -1,0 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Kantumruy+Pro:ital,wght@0,100..700;1,100..700&display=swap');
+
+@import "tailwindcss";
+
+
+html {
+    scroll-behavior: smooth !important;
+}
+
+@theme {
+    --font-orbitron: "Orbitron", serif;
+    --font-kantumruy: "Kantumruy Pro", sans-serif;
+}
+
+@theme inline {
+    --font-sans: var(--font-kantumruy);
+    --font-heading: var(--font-orbitron);
+}
