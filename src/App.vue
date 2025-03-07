@@ -5,11 +5,12 @@ import {ref} from "vue";
 
 const navigation = ref([
     { name: 'Home', href: '/'},
-    { name: 'About', href: '/#about'},
-    { name: 'Skills', href: '/#skills'},
+    /*{ name: 'About', href: '/#about'},*/
+    /*{ name: 'Skills', href: '/#skills'},*/
     { name: 'Projects', href: '/#projects'},
     { name: 'LinkedIn', href: 'https://www.linkedin.com/in/lukeertzberger/'},
     { name: 'GitHub', href: 'https://github.com/lsecyber'},
+    { name: 'Resume', href: 'https://lukeertzberger.com/Luke%20Ertzberger%20Resume.pdf'}
 ])
 
 const ctaButton = ref({
