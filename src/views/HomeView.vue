@@ -225,7 +225,7 @@ const openSkillsModal = (skill) => {
 
           <div class="w-full flex justify-center">
             <img
-                src="/images/luke-ai-professional-1.webp"
+                src="/images/luke-headshot-transparent-background.png"
                 alt="A digitally painted portrait of a young man with light skin, short light brown hair, and blue eyes.
                  He is wearing a black suit with a white dress shirt and a black tie. He has a warm smile and is looking
                  slightly to the side. The background is a neutral gray color, and the art style is semi-realistic with
