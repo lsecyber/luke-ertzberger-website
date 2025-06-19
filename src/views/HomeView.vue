@@ -151,12 +151,12 @@ const projects = ref([
     link: 'https://spiritualtwist.com'
   },
   {
-    name: 'New Hanover Church',
+    name: 'Brandy Morley Music',
     type: 'Website Design',
-    description: 'New Hanover Church needed a refreshed website that aligned with their mission. I created a welcoming, ' +
-        'user-friendly site with live-stream integration and seamless sermon uploads, making it easy for members to ' +
-        'engage and access content anytime.\n',
-    link: 'https://newhanoverchurch.org'
+    description: 'I designed a responsive website for Brandy Morley Music, showcasing her debut album YOU STAY with' +
+        'integrated music streaming, a blog, and an online store. The site includes a newsletter signup with a fre' +
+        ' magazine download to share song stories.\n',
+    link: 'https://brandymorleymusic.com'
   },
   {
     name: 'Personal Portfolio Site',
@@ -211,13 +211,11 @@ const openSkillsModal = (skill) => {
         <div class="grid grid-cols-1 md:grid-cols-2 py-5 mx-10 max-w-300 gap-12 md:gap-0">
           <div class="">
             <p class="text-grey-400 text-center w-full text-2xl">
-              Hi! I’m a senior Computer Science student at Regent University with a 4.0 GPA and a passion for building
-              efficient, scalable software solutions. I specialize in full-stack development, backend systems, and
-              dynamic
-              web applications, leveraging my experience in web development, cloud infrastructure, and project
-              management.
-              I thrive on solving complex problems and creating impactful technology that improves workflows and user
-              experiences.
+              Hi! I’m a software developer and web designer passionate about crafting efficient, scalable applications
+              and engaging digital experiences. I specialize in full-stack development, ranging from robust backend systems to
+              dynamic front-end interfaces, leveraging modern web technologies, cloud infrastructure, and strong project
+              management practices. I excel at solving complex challenges and transforming ideas into impactful
+              solutions that streamline workflows and delight users.
             </p>
             <a href="#projects" class="mt-6 inline-block bg-cyan-500 px-6 py-3 rounded-lg hover:bg-cyan-600">View My
               Work</a>
@@ -245,19 +243,16 @@ const openSkillsModal = (skill) => {
         <p class="text-gray-400 mt-4 px-4">
           I’m a software developer passionate about building scalable and impactful digital
           solutions. With expertise in Python, JavaScript, and full-stack development, I specialize in creating
-          efficient
-          web applications, backend systems, and AI-driven solutions. Through my work at
+          efficient web applications, backend systems, and AI-driven solutions. Through my work at
           <a href="https://triunecreative.com" target="_blank"><u>Triune Creative</u></a>, I’ve led web design
           and media projects for nonprofits and small businesses, focusing on user-friendly, client-centric
           designs. My development experience also includes work at various startups engineering AI-enhanced workflows,
-          optimizing ERP systems, and leveraging cloud infrastructure to improve software performance. I'm currently a
-          Senior pursuing a B.S. in Computer Science at Regent University, where I maintain a 4.0 GPA and serve on the
-          executive board of Regent's Association for Computing Machinery chapter.<br><br>
+          optimizing ERP systems, and leveraging cloud infrastructure to improve software performance.<br><br>
 
           Beyond coding, I have a diverse range of interests and experiences that shape who I am. I was homeschooled,
           which gave me the flexibility to develop a deep love for learning and problem-solving. Music is also a
           significant part of my life - I’ve played piano since I was four and currently perform at weddings and
-          retirement communities. Currently, I serve as an intern at
+          retirement communities. Currently, I serve part-time as an intern at
           <a href="https://northside.church" target="_blank"><u>Northside Church</u></a>, where I apply my technical
           and creative skills in a ministry setting. In my free time, I enjoy reading, particularly books on
           apologetics, allegories, and historical fiction.
@@ -286,7 +281,7 @@ const openSkillsModal = (skill) => {
 
         <div class="flex flex-wrap justify-center mt-6 gap-4 px-2">
           <template v-for="skill in skills">
-            <span class="bg-gray-700 px-4 py-2 rounded" @click="openSkillsModal(skill)">{{ skill?.name }}</span>
+            <span class="bg-gray-700 px-4 py-2 rounded act-like-button" @click="openSkillsModal(skill)">{{ skill?.name }}</span>
           </template>
         </div>
       </div>
@@ -325,5 +320,8 @@ const openSkillsModal = (skill) => {
 </template>
 
 <style scoped>
-
+.act-like-button {
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
 </style>
