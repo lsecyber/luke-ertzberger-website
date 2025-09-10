@@ -26,6 +26,16 @@ const skills = ref([
     icon: 'chat-bubble-left-right',
   },
   {
+    name: 'LLMs',
+    description: 'I have hands-on experience integrating large language models (LLMs) into applications to enhance functionality and user experience.',
+    icon: 'server',
+  },
+  {
+    name: 'Public Sector AI',
+    description: 'Currently working with the North Carolina Department of Information Technology to design and prototype AI applications for government services.',
+    icon: 'bolt',
+  },
+  {
     name: 'Python',
     description: 'Experienced in Python for backend development, data processing, and AI applications, used in projects like Voltera’s AI-driven SNF workflow optimizations.',
     icon: 'python',
@@ -34,11 +44,6 @@ const skills = ref([
     name: 'JavaScript',
     description: 'Proficient in JavaScript for front-end and full-stack development, including Vue.js, React.js, and Angular.',
     icon: 'code-bracket',
-  },
-  {
-    name: 'FastAPI',
-    description: 'Used FastAPI for efficient and scalable backend development, particularly in ERP systems and AI-related projects.',
-    icon: 'server',
   },
   {
     name: 'Vue.js',
@@ -104,11 +109,6 @@ const skills = ref([
     name: 'UI/UX Design',
     description: 'Designed and implemented user-friendly interfaces, especially in web development projects.',
     icon: 'window',
-  },
-  {
-    name: 'AI & LLMs',
-    description: 'Experience working with AI models and vector databases for improving document processing and search functionalities.',
-    icon: 'bolt',
   },
   {
     name: 'Linux/Bash Scripting',
@@ -206,16 +206,14 @@ const openSkillsModal = (skill) => {
     <!-- Hero Section -->
     <section class="text-center py-20">
       <h2 class="text-4xl font-bold font-heading" v-fade-in>LUKE ERTZBERGER</h2>
-      <p class="text-gray-400 mt-4" v-fade-in>Software Developer | Web Designer | Problem Solver</p>
+      <p class="text-gray-400 mt-4" v-fade-in>AI Developer | Technical Advisor | Problem Solver</p>
       <div class="flex justify-center mt-6" v-fade-in>
         <div class="grid grid-cols-1 md:grid-cols-2 py-5 mx-10 max-w-300 gap-12 md:gap-0">
           <div class="">
             <p class="text-grey-400 text-center w-full text-2xl">
-              Hi! I’m a software developer and web designer passionate about crafting efficient, scalable applications
-              and engaging digital experiences. I specialize in full-stack development, ranging from robust backend systems to
-              dynamic front-end interfaces, leveraging modern web technologies, cloud infrastructure, and strong project
-              management practices. I excel at solving complex challenges and transforming ideas into impactful
-              solutions that streamline workflows and delight users.
+              Hi! I'm an AI Developer and Technical Advisor passionate about designing responsible AI solutions and engaging digital experiences for the public sector.
+              I specialize in building advanced AI applications with large language models and machine learning frameworks, while also bringing full-stack development expertise to create scalable systems that serve citizens effectively.
+              I excel at transforming complex AI concepts into practical, ethical solutions that streamline government workflows and enhance public services.
             </p>
             <a href="#projects" class="mt-6 inline-block bg-cyan-500 px-6 py-3 rounded-lg hover:bg-cyan-600">View My
               Work</a>
@@ -238,24 +236,14 @@ const openSkillsModal = (skill) => {
 
     <!-- About Section -->
     <section id="about" class="py-20 bg-gray-800">
-      <div class="container mx-auto text-center flex justify-center flex-col max-w-200" v-fade-in>
+      <div class="container mx-auto text-center flex justify-center flex-col max-w-300" v-fade-in>
         <h2 class="text-3xl font-bold font-heading">A Bit About Me</h2>
         <p class="text-gray-400 mt-4 px-4">
-          I’m a software developer passionate about building scalable and impactful digital
-          solutions. With expertise in Python, JavaScript, and full-stack development, I specialize in creating
-          efficient web applications, backend systems, and AI-driven solutions. Through my work at
-          <a href="https://triunecreative.com" target="_blank"><u>Triune Creative</u></a>, I’ve led web design
-          and media projects for nonprofits and small businesses, focusing on user-friendly, client-centric
-          designs. My development experience also includes work at various startups engineering AI-enhanced workflows,
-          optimizing ERP systems, and leveraging cloud infrastructure to improve software performance.<br><br>
-
-          Beyond coding, I have a diverse range of interests and experiences that shape who I am. I was homeschooled,
-          which gave me the flexibility to develop a deep love for learning and problem-solving. Music is also a
-          significant part of my life - I’ve played piano since I was four and currently perform at weddings and
-          retirement communities. Currently, I serve part-time as an intern at
-          <a href="https://northside.church" target="_blank"><u>Northside Church</u></a>, where I apply my technical
-          and creative skills in a ministry setting. In my free time, I enjoy reading, particularly books on
-          apologetics, allegories, and historical fiction.
+          I'm an AI Developer passionate about building responsible and impactful AI solutions for the public sector. Currently serving with the <a href="https://it.nc.gov" target="_blank" class="underline">North Carolina Department of Information Technology</a>, I design and prototype advanced AI applications leveraging large language models, AI agents, and machine learning frameworks while guiding strategic adoption across state agencies. My role spans building proof-of-concepts and pilot applications, evaluating emerging technologies such as synthetic data and digital twins, and advising teams on responsible integration of AI into government services. I contribute to establishing AI governance frameworks and practical policies that prioritize ethics, security, and transparency, helping lead innovation efforts that ensure North Carolina's AI initiatives remain accountable, impactful, and citizen-focused.
+          <br><br>
+          My technical expertise spans Python, JavaScript, and full-stack development, with specialized experience in AI-driven solutions and scalable digital systems. Through my work at <a href="https://triunecreative.com" target="_blank" class="underline">Triune Creative</a>, I've led web design and media projects for nonprofits and small businesses, focusing on user-friendly, client-centric designs. My development experience also includes work at various startups engineering AI-enhanced workflows, optimizing ERP systems, and leveraging cloud infrastructure to improve software performance.
+          <br><br>
+          Beyond coding, I have a diverse range of interests and experiences that shape who I am. I was homeschooled, which gave me the flexibility to develop a deep love for learning and problem-solving. Music is also a significant part of my life - I've played piano since I was four and currently <a href="https://sophisticatedsoundandkeys.com/" target="_blank" class="underline">play weddings</a>. In my free time, I enjoy reading, particularly books on apologetics, allegories, and historical fiction.
         </p>
       </div>
     </section>
