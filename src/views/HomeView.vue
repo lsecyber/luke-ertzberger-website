@@ -207,6 +207,30 @@ const openSkillsModal = (skill) => {
     <section class="text-center py-20">
       <h2 class="text-4xl font-bold font-heading" v-fade-in>LUKE ERTZBERGER</h2>
       <p class="text-gray-400 mt-4" v-fade-in>AI Developer | Technical Advisor | Problem Solver</p>
+      <div class="flex flex-wrap justify-center items-center gap-3 mt-6">
+        <a href="https://checkr.com/profiles/u/3b74a057-6205-47a5-8f00-37d67729f0bd?_ref=embed_badge" target="_blank" rel="noopener">
+          <img src="https://checkr.com/profiles/u/3b74a057-6205-47a5-8f00-37d67729f0bd/verified_badge?_ref=embed_badge" alt="Checkr Profile" />
+        </a>
+
+        <a href="https://pros.squarespace.com/blog/work-with-a-circle-member" target="_blank" rel="noopener">
+          <img src="/logos/Circle%20Gold%20Partner%202025.webp" alt="Squarespace Circle Gold Partner" width="100"/>
+        </a>
+
+        <a href="https://apps.apple.com/us/developer/luke-ertzberger/id1828987839" target="_blank" rel="noopener">
+          <img src="https://img.shields.io/badge/Apple%20Developer-555555?logo=apple&logoColor=white" alt="Apple Developer" />
+        </a>
+
+
+        <a href="https://www.linkedin.com/in/lukeertzberger/overlay/about-this-profile/" target="_blank" rel="noopener">
+          <img src="/logos/linked-in-verified-badge.webp" alt="LinkedIn Verified" width="100"/>
+        </a>
+
+
+        <a href="https://www.hackerrank.com/certificates/93af2358ff6e" target="_blank" rel="noopener">
+          <img src="https://img.shields.io/badge/HackerRank-Software%2520Engineer?style=flat&logo=hackerrank&logoColor=white&logoSize=10&label=Software%20Engineer&labelColor=%2332c766&color=lightgrey" alt="HackerRank Software Developer Certification" />
+        </a>
+
+      </div>
       <div class="flex justify-center mt-6" v-fade-in>
         <div class="grid grid-cols-1 md:grid-cols-2 py-5 mx-10 max-w-300 gap-12 md:gap-0">
           <div class="">
