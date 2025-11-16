@@ -206,7 +206,7 @@ const openSkillsModal = (skill) => {
     <!-- Hero Section -->
     <section class="text-center py-20">
       <h2 class="text-4xl font-bold font-heading" v-fade-in>LUKE ERTZBERGER</h2>
-      <p class="text-gray-400 mt-4" v-fade-in>AI Developer | Technical Advisor | Problem Solver</p>
+      <p class="text-gray-400 mt-4" v-fade-in>Senior AI Engineer | Technical Advisor | Problem Solver</p>
       <div class="flex flex-wrap justify-center items-center gap-3 mt-6">
         <a href="https://checkr.com/profiles/u/3b74a057-6205-47a5-8f00-37d67729f0bd?_ref=embed_badge" target="_blank" rel="noopener">
           <img src="https://checkr.com/profiles/u/3b74a057-6205-47a5-8f00-37d67729f0bd/verified_badge?_ref=embed_badge" alt="Checkr Profile" />
