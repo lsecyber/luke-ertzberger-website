@@ -2,15 +2,16 @@
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/752e2e16-0259-4d14-95e5-0d8fd0180f81/deploy-status)](https://app.netlify.com/sites/lukeertzberger/deploys)
 
-Personal portfolio site for Luke Ertzberger. The main site is a React + TypeScript single-page app built with Vite, styled with Tailwind CSS and shadcn/ui, and animated with Framer Motion.
+Personal portfolio site for Luke Ertzberger — AI Solutions Architect & Senior AI Engineer. The main site is a React + TypeScript single-page app built with Vite, styled with Tailwind CSS and shadcn/ui, and animated with Framer Motion.
 
 Live site: https://lukeertzberger.com
 
 ## Highlights
 
-- Responsive portfolio focused on AI consulting, engineering, and selected client work
-- Sections for about, experience, skills, projects, testimonials, and contact
+- Responsive portfolio focused on AI solutions architecture, engineering, and public sector work
+- Sections for hero, about, experience, skills, projects, testimonials, and contact
 - Netlify-powered contact form submission flow
+- Google Analytics integration
 - Static deployment optimized for a custom domain on Netlify
 
 ## Tech Stack
@@ -21,6 +22,9 @@ Live site: https://lukeertzberger.com
 - Tailwind CSS
 - shadcn/ui
 - Framer Motion
+- React Router v6
+- React Hook Form + Zod
+- TanStack Query
 - Vitest
 
 ## Getting Started
@@ -28,42 +32,42 @@ Live site: https://lukeertzberger.com
 Requirements:
 
 - Node.js 18+
-- npm
+- [Bun](https://bun.sh)
 
 Install dependencies:
 
 ```sh
-npm install
+bun install
 ```
 
 Start the development server:
 
 ```sh
-npm run dev
+bun run dev
 ```
 
 Create a production build:
 
 ```sh
-npm run build
+bun run build
 ```
 
 Preview the production build locally:
 
 ```sh
-npm run preview
+bun run preview
 ```
 
 Run tests:
 
 ```sh
-npm run test
+bun run test
 ```
 
 Run linting:
 
 ```sh
-npm run lint
+bun run lint
 ```
 
 ## Deployment
