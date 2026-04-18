@@ -7,16 +7,43 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
+# Dependencies
 node_modules
+
+# Build output
 dist
 dist-ssr
-*.local
+
+# Environment variables
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Vite cache
+.vite/
+
+# TypeScript incremental build
+*.tsbuildinfo
+
+# Test coverage
+coverage/
+
+# Bun cache
+.bun/
+
+# General cache
+.cache/
 
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
 .idea
+*.iml
 .DS_Store
+Thumbs.db
+ehthumbs.db
 *.suo
 *.ntvs*
 *.njsproj
