@@ -1,23 +1,27 @@
+import { lazy, Suspense } from "react";
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
-import AboutSection from "@/components/AboutSection";
-import ExperienceSection from "@/components/ExperienceSection";
-import SkillsSection from "@/components/SkillsSection";
-import ProjectsSection from "@/components/ProjectsSection";
-import TestimonialsSection from "@/components/TestimonialsSection";
-import ContactSection from "@/components/ContactSection";
+
+const AboutSection = lazy(() => import("@/components/AboutSection"));
+const ExperienceSection = lazy(() => import("@/components/ExperienceSection"));
+const SkillsSection = lazy(() => import("@/components/SkillsSection"));
+const ProjectsSection = lazy(() => import("@/components/ProjectsSection"));
+const TestimonialsSection = lazy(() => import("@/components/TestimonialsSection"));
+const ContactSection = lazy(() => import("@/components/ContactSection"));
 
 const Index = () => {
   return (
     <div className="min-h-screen bg-background noise-bg">
       <Navbar />
       <HeroSection />
-      <AboutSection />
-      <ExperienceSection />
-      <SkillsSection />
-      <ProjectsSection />
-      <TestimonialsSection />
-      <ContactSection />
+      <Suspense fallback={null}>
+        <AboutSection />
+        <ExperienceSection />
+        <SkillsSection />
+        <ProjectsSection />
+        <TestimonialsSection />
+        <ContactSection />
+      </Suspense>
     </div>
   );
 };

@@ -3,26 +3,63 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+    <meta name="theme-color" content="#080a0c" />
+    <link rel="canonical" href="https://lukeertzberger.com/" />
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
     <link rel="manifest" href="/site.webmanifest" />
+    <!-- Resource hints for Google Analytics -->
+    <link rel="preconnect" href="https://www.googletagmanager.com" />
+    <link rel="dns-prefetch" href="https://www.google-analytics.com" />
     <title>Luke Ertzberger — AI Solutions Architect & Senior AI Engineer</title>
     <meta name="description" content="Luke Ertzberger is an AI Solutions Architect and Senior AI Engineer crafting responsible, impactful AI for the public sector." />
     <meta name="author" content="Luke Ertzberger" />
+    <!-- Open Graph -->
     <meta property="og:title" content="Luke Ertzberger — AI Solutions Architect" />
     <meta property="og:description" content="AI Solutions Architect crafting responsible AI for the public sector." />
     <meta property="og:type" content="website" />
-
+    <meta property="og:url" content="https://lukeertzberger.com/" />
+    <meta property="og:image" content="https://lukeertzberger.com/android-chrome-512x512.png" />
+    <meta property="og:image:alt" content="Luke Ertzberger — AI Solutions Architect" />
+    <!-- Twitter / X -->
     <meta name="twitter:card" content="summary_large_image" />
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-LYJM23WLL3"></script>
+    <meta name="twitter:title" content="Luke Ertzberger — AI Solutions Architect" />
+    <meta name="twitter:description" content="AI Solutions Architect crafting responsible AI for the public sector." />
+    <meta name="twitter:image" content="https://lukeertzberger.com/android-chrome-512x512.png" />
+    <meta name="twitter:image:alt" content="Luke Ertzberger — AI Solutions Architect" />
+    <!-- JSON-LD structured data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Luke Ertzberger",
+      "url": "https://lukeertzberger.com",
+      "jobTitle": "AI Solutions Architect & Senior AI Engineer",
+      "description": "AI Solutions Architect and Senior AI Engineer crafting responsible, impactful AI for the public sector.",
+      "sameAs": [
+        "https://linkedin.com/in/lukeertzberger",
+        "https://github.com/lsecyber"
+      ]
+    }
+    </script>
+    <!-- Google Analytics — Consent Mode v2 defaults (no cookies until consent granted) -->
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
+      gtag('consent', 'default', {
+        analytics_storage: 'denied',
+        ad_storage: 'denied',
+        ad_user_data: 'denied',
+        ad_personalization: 'denied',
+        wait_for_update: 500
+      });
+    </script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-LYJM23WLL3"></script>
+    <script>
       gtag('js', new Date());
-
       gtag('config', 'G-LYJM23WLL3');
     </script>
   </head>

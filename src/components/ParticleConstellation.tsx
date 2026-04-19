@@ -14,6 +14,7 @@ export default function ParticleConstellation() {
   const mouseRef = useRef({ x: -1000, y: -1000 });
   const animRef = useRef<number>(0);
   const particlesRef = useRef<Particle[]>([]);
+  const isVisibleRef = useRef(true);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -40,31 +41,39 @@ export default function ParticleConstellation() {
       opacity: Math.random() * 0.5 + 0.2,
     }));
 
+    // Track mouse on window — canvas has pointer-events-none so events never
+    // reach it directly; window-level tracking lets the effect still work.
     const onMouseMove = (e: MouseEvent) => {
       const rect = canvas.getBoundingClientRect();
-      mouseRef.current.x = e.clientX - rect.left;
-      mouseRef.current.y = e.clientY - rect.top;
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      if (x >= 0 && x <= rect.width && y >= 0 && y <= rect.height) {
+        mouseRef.current.x = x;
+        mouseRef.current.y = y;
+      } else {
+        mouseRef.current.x = -1000;
+        mouseRef.current.y = -1000;
+      }
     };
 
-    const onMouseLeave = () => {
-      mouseRef.current = { x: -1000, y: -1000 };
-    };
-
-    canvas.addEventListener("mousemove", onMouseMove);
-    canvas.addEventListener("mouseleave", onMouseLeave);
+    window.addEventListener("mousemove", onMouseMove);
 
     const animate = () => {
+      // Pause when scrolled off-screen; IntersectionObserver restarts the loop.
+      if (!isVisibleRef.current) return;
+
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       const particles = particlesRef.current;
       const mouse = mouseRef.current;
 
       for (const p of particles) {
-        // Mouse attraction
+        // Mouse attraction — use squared distance to avoid sqrt for most checks
         const dxM = mouse.x - p.x;
         const dyM = mouse.y - p.y;
-        const distM = Math.sqrt(dxM * dxM + dyM * dyM);
-        if (distM < 200 && distM > 0) {
-          const force = (200 - distM) / 200 * 0.15;
+        const distMSq = dxM * dxM + dyM * dyM;
+        if (distMSq < 200 * 200 && distMSq > 0) {
+          const distM = Math.sqrt(distMSq);
+          const force = ((200 - distM) / 200) * 0.15;
           p.vx += (dxM / distM) * force;
           p.vy += (dyM / distM) * force;
         }
@@ -83,13 +92,14 @@ export default function ParticleConstellation() {
         if (p.y > canvas.height) p.y = 0;
       }
 
-      // Draw connections
+      // Draw connections — compare squared distances to skip sqrt for distant pairs
       for (let i = 0; i < particles.length; i++) {
         for (let j = i + 1; j < particles.length; j++) {
           const dx = particles[i].x - particles[j].x;
           const dy = particles[i].y - particles[j].y;
-          const dist = Math.sqrt(dx * dx + dy * dy);
-          if (dist < 120) {
+          const distSq = dx * dx + dy * dy;
+          if (distSq < 120 * 120) {
+            const dist = Math.sqrt(distSq);
             const opacity = (1 - dist / 120) * 0.15;
             ctx.beginPath();
             ctx.moveTo(particles[i].x, particles[i].y);
@@ -105,8 +115,9 @@ export default function ParticleConstellation() {
       for (const p of particles) {
         const dx = p.x - mouse.x;
         const dy = p.y - mouse.y;
-        const dist = Math.sqrt(dx * dx + dy * dy);
-        if (dist < 180) {
+        const distSq = dx * dx + dy * dy;
+        if (distSq < 180 * 180) {
+          const dist = Math.sqrt(distSq);
           const opacity = (1 - dist / 180) * 0.25;
           ctx.beginPath();
           ctx.moveTo(p.x, p.y);
@@ -127,13 +138,26 @@ export default function ParticleConstellation() {
 
       animRef.current = requestAnimationFrame(animate);
     };
-    animate();
+
+    // Pause the loop when the canvas is not in the viewport
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        isVisibleRef.current = entry.isIntersecting;
+        if (entry.isIntersecting) {
+          cancelAnimationFrame(animRef.current);
+          animRef.current = requestAnimationFrame(animate);
+        }
+      },
+      { threshold: 0 }
+    );
+    observer.observe(canvas);
+    animRef.current = requestAnimationFrame(animate);
 
     return () => {
       cancelAnimationFrame(animRef.current);
+      observer.disconnect();
       window.removeEventListener("resize", resize);
-      canvas.removeEventListener("mousemove", onMouseMove);
-      canvas.removeEventListener("mouseleave", onMouseLeave);
+      window.removeEventListener("mousemove", onMouseMove);
     };
   }, []);
 
