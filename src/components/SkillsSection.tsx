@@ -1,26 +1,45 @@
 import { motion, useInView } from "framer-motion";
 import { useRef, useState } from "react";
+import { Award, ExternalLink } from "lucide-react";
 
 const categories = [
   {
-    name: "AI & ML",
-    skills: ["LLMs", "AI Agents", "Machine Learning", "Responsible AI", "Synthetic Data", "Digital Twins"],
+    name: "Applied AI",
+    skills: ["LLMs", "RAG", "AI Agents", "Context Engineering", "Prompt Engineering", "Model Evaluation", "Embeddings", "Vector Search", "Guardrails", "Human-in-the-Loop"],
+  },
+  {
+    name: "AI Tooling",
+    skills: ["Claude Code", "Codex", "GitHub Copilot", "Cursor", "MCP", "LangChain", "LangGraph", "OpenAI Agents SDK"],
+  },
+  {
+    name: "Cloud AI",
+    skills: ["Vertex AI", "Gemini Enterprise", "AWS Bedrock", "Azure AI Foundry", "ChatGPT Enterprise", "BigQuery"],
   },
   {
     name: "Languages",
-    skills: ["Python", "JavaScript", "TypeScript", "PHP", "Shell Scripting", "Java"],
+    skills: ["Python", "SQL", "TypeScript", "JavaScript", "Java", "PHP", "C++"],
   },
   {
-    name: "Frameworks",
-    skills: ["FastAPI", "Vue.js", "React", "Node.js", "Angular", "Flask"],
+    name: "Engineering",
+    skills: ["FastAPI", "React", "Vue.js", "Node.js", "Docker", "Kubernetes", "PostgreSQL", "DynamoDB"],
   },
   {
-    name: "Infrastructure",
-    skills: ["Terraform", "Kubernetes", "Docker", "AWS", "PostgreSQL", "DynamoDB"],
+    name: "Also",
+    skills: ["Responsible AI", "UI/UX Design", "Git", "Linux/Bash", "ASL", "100 WPM Typing"],
   },
+];
+
+const certifications = [
   {
-    name: "Other",
-    skills: ["UI/UX Design", "Git", "Linux/Bash", "Adobe Suite", "ASL", "100 WPM Typing"],
+    name: "Generative AI Leader",
+    issuer: "Google Cloud",
+    href: "https://www.credly.com/badges/e712e15b-fc7a-4e63-9d60-f1ef29e30ae1/public_url",
+  },
+  { name: "Generative AI Fundamentals", issuer: "Google Cloud" },
+  {
+    name: "Responsible AI for Public Sector",
+    issuer: "InnovateUS",
+    href: "https://www.linkedin.com/in/lukeertzberger/overlay/Certifications/833618222/treasury/?profileId=ACoAAEbXLTABzNjZqA6q0XCDKYISBQwy6Xnv1pM",
   },
 ];
 
@@ -93,6 +112,58 @@ export default function SkillsSection() {
               <span className="text-sm font-medium text-foreground">{skill}</span>
             </motion.div>
           ))}
+        </motion.div>
+
+        {/* Certifications */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ delay: 0.3, duration: 0.5 }}
+          className="mt-16"
+        >
+          <div className="flex items-center gap-2 mb-5">
+            <Award size={18} className="text-primary" />
+            <h3 className="text-sm font-mono text-muted-foreground tracking-wider">
+              {"// Certifications"}
+            </h3>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            {certifications.map((cert) => {
+              const content = (
+                <>
+                  <div>
+                    <p className="text-sm font-medium text-foreground">{cert.name}</p>
+                    <p className="text-xs text-muted-foreground mt-0.5">{cert.issuer}</p>
+                  </div>
+                  {cert.href && (
+                    <ExternalLink
+                      size={14}
+                      className="text-muted-foreground group-hover:text-primary transition-colors flex-shrink-0 mt-0.5"
+                    />
+                  )}
+                </>
+              );
+
+              return cert.href ? (
+                <a
+                  key={cert.name}
+                  href={cert.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group gradient-border rounded-xl p-4 glow-card flex items-start justify-between gap-3"
+                >
+                  {content}
+                </a>
+              ) : (
+                <div
+                  key={cert.name}
+                  className="gradient-border rounded-xl p-4 flex items-start justify-between gap-3"
+                >
+                  {content}
+                </div>
+              );
+            })}
+          </div>
         </motion.div>
       </div>
     </section>

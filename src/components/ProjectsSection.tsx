@@ -28,7 +28,7 @@ const projects = [
     title: "Allo — Synply's AI Assistant",
     category: "AI / SaaS",
     description: "Leading the design and implementation of Allo, Synply's AI assistant — building on the existing platform to make it AI-native from the ground up.",
-    tags: ["AI/ML", "Product Strategy", "Platform Design"],
+    tags: ["RAG", "Agents", "MCP", "Guardrails"],
     link: "https://synply.io/",
     color: "from-glow-pink/20 to-glow-cyan/20",
     problem: "Synply had a powerful platform but users were underutilizing its capabilities. The product needed an intelligent layer that could guide users, automate workflows, and make the platform feel effortlessly smart.",
