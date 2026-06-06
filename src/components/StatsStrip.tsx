@@ -2,10 +2,10 @@ import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 
 const stats = [
-  { value: "5,000+", label: "Staff hours saved annually" },
-  { value: "10+", label: "Enterprise & gov't clients" },
-  { value: "4.0", label: "GPA — Summa Cum Laude" },
-  { value: "2", label: "Concurrent senior roles" },
+  { value: "25,000+", label: "Hours saved for organizations" },
+  { value: "5+", label: "Years shipping production software" },
+  { value: "10+", label: "Organizations & clients served" },
+  { value: "3", label: "Sectors: government · fintech · private" },
 ];
 
 export default function StatsStrip() {
