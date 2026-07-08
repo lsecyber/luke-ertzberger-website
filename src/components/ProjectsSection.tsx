@@ -5,6 +5,18 @@ import ProjectModal from "./ProjectModal";
 
 const projects = [
   {
+    title: "Public Comment Analyzer",
+    category: "AI / Government · Open Source",
+    description: "Built an open-source, serverless AI tool that analyzes public comment submissions at scale — generating per-row analysis and aggregate sentiment summaries for thousands of citizen responses at once.",
+    highlight: "Open source · Processes up to 50,000 comments per upload",
+    tags: ["Python", "AWS Bedrock", "Angular", "Serverless", "Open Source"],
+    link: "https://github.com/NC-DIT-Open-Source/Public-Comment-Analyzer",
+    color: "from-glow-cyan/20 to-glow-blue/20",
+    problem: "Public comment periods can generate thousands of submissions that are tedious and expensive to review by hand. Agencies needed a way to synthesize large volumes of citizen feedback quickly without losing the nuance of individual responses.",
+    approach: "Designed and built a serverless AWS pipeline — Python 3.12 Lambda functions running up to 500 concurrent workers, AWS Bedrock with Claude Haiku for per-row analysis and Claude Opus for aggregate summaries, S3 and DynamoDB for storage and job state, and an Angular front end with real-time status monitoring, customizable per-column analysis instructions, and WCAG 2.1 AA accessibility. Released as open source under NC DIT.",
+    results: "Handles up to 50,000 rows per upload, turning a manual review process into an automated analysis session — roughly 15 seconds for 10 rows to about 10 minutes for 5,000. Produces markdown sentiment dashboards at an estimated $2–5 per 1,000 comments, and the full source is publicly available for other agencies to adopt.",
+  },
+  {
     title: "DMV Profanity Validation AI",
     category: "AI / Government",
     description: "Designed and built an AI system for the NC DMV that automatically validates whether personalized plate strings contain profanity, replacing a massive manual review process.",
