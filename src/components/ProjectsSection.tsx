@@ -5,9 +5,22 @@ import ProjectModal from "./ProjectModal";
 
 const projects = [
   {
+    title: "Public Comment Analyzer",
+    category: "AI / Government · Open Source",
+    description: "Built an open-source, serverless AI tool that analyzes public comment submissions at scale — generating per-row analysis and aggregate sentiment summaries for thousands of citizen responses at once.",
+    highlight: "Open source · Turns weeks of manual review into minutes",
+    tags: ["Python", "AWS Bedrock", "Angular", "Serverless", "Open Source"],
+    link: "https://github.com/NC-DIT-Open-Source/Public-Comment-Analyzer",
+    color: "from-glow-cyan/20 to-glow-blue/20",
+    problem: "Public comment periods and large surveys can generate thousands of submissions that are tedious and expensive to review by hand. Agencies were drowning in feedback with no efficient way to extract insights, identify trends, or summarize findings — without losing the nuance of each individual response.",
+    approach: "Designed and built a serverless AWS pipeline — Python 3.12 Lambda functions running up to 500 concurrent workers, AWS Bedrock with Claude Haiku for per-row analysis and Claude Opus for aggregate sentiment summaries, S3 and DynamoDB for storage and job state, and an Angular front end with real-time status monitoring, customizable per-column analysis instructions, and WCAG 2.1 AA accessibility. Released as open source under NC DIT.",
+    results: "Handles up to 50,000 rows per upload, transforming a process that took weeks of manual reading into an automated analysis session — roughly 15 seconds for 10 rows to about 10 minutes for 5,000. Produces markdown sentiment dashboards at an estimated $2–5 per 1,000 comments, and the full source is publicly available for other agencies to adopt.",
+  },
+  {
     title: "DMV Profanity Validation AI",
     category: "AI / Government",
     description: "Designed and built an AI system for the NC DMV that automatically validates whether personalized plate strings contain profanity, replacing a massive manual review process.",
+    highlight: "Saves 5,000+ staff hours per year",
     tags: ["Python", "LLMs", "AI/ML", "Automation"],
     color: "from-glow-cyan/20 to-glow-blue/20",
     problem: "A team at the NC DMV was manually reviewing over 1,500 personalized license plate requests per week to check for profanity and hidden meanings — consuming hundreds of hours of staff time every month.",
@@ -15,20 +28,11 @@ const projects = [
     results: "The tool saves an estimated 5,000+ staff hours per year by automating the research and flagging process, letting reviewers focus on edge cases rather than manually checking every submission.",
   },
   {
-    title: "Survey Analysis AI Tool",
-    category: "AI / Government",
-    description: "Built an AI-powered tool that processes 5,000+ survey responses, generates per-row analysis, performs overall sentiment analysis, and features a conversational chat interface.",
-    tags: ["Python", "LLMs", "Data Analysis", "NLP"],
-    color: "from-glow-blue/20 to-glow-purple/20",
-    problem: "A state agency was drowning in survey data — receiving 5,000+ responses per cycle in massive Excel spreadsheets with no efficient way to extract insights, identify trends, or summarize findings.",
-    approach: "Designed an AI tool that ingests large spreadsheets, generates analysis and summaries for each individual row, then performs overall sentiment analysis and trend identification across the full dataset. Added a conversational chat interface so analysts can ask follow-up questions about the data naturally.",
-    results: "Transformed a process that took weeks of manual reading into an interactive analysis session. Analysts can now digest thousands of responses in hours and surface actionable insights through natural conversation with the data.",
-  },
-  {
     title: "Allo — Synply's AI Assistant",
     category: "AI / SaaS",
     description: "Leading the design and implementation of Allo, Synply's AI assistant — building on the existing platform to make it AI-native from the ground up.",
-    tags: ["AI/ML", "Product Strategy", "Platform Design"],
+    highlight: "In production at a funded fintech SaaS",
+    tags: ["RAG", "Agents", "MCP", "Guardrails"],
     link: "https://synply.io/",
     color: "from-glow-pink/20 to-glow-cyan/20",
     problem: "Synply had a powerful platform but users were underutilizing its capabilities. The product needed an intelligent layer that could guide users, automate workflows, and make the platform feel effortlessly smart.",
@@ -39,6 +43,7 @@ const projects = [
     title: "Spiritual Twist Productions",
     category: "Web Development",
     description: "Redesigned the website and built a custom registration system to manage growing programs, improving accessibility and streamlining administration.",
+    highlight: "Cut admin time by 70%+ — zero registration errors",
     tags: ["Vue.js", "PHP", "MySQL", "UI/UX"],
     link: "https://spiritualtwist.com/",
     color: "from-glow-cyan/20 to-glow-purple/20",
@@ -50,6 +55,7 @@ const projects = [
     title: "Brandy Morley Music",
     category: "Web Design",
     description: "Designed a responsive website showcasing a debut album with integrated streaming, blog, online store, and newsletter signup.",
+    highlight: "Full launch: streaming, merch & fan growth in one hub",
     tags: ["Squarespace", "Web Design", "E-Commerce"],
     link: "https://brandymorleymusic.com/",
     color: "from-glow-purple/20 to-glow-blue/20",
@@ -103,9 +109,14 @@ export default function ProjectsSection() {
                 <h3 className="text-lg font-semibold text-foreground mb-2 group-hover:text-primary transition-colors">
                   {project.title}
                 </h3>
-                <p className="text-sm text-muted-foreground leading-relaxed mb-4">
+                <p className="text-sm text-muted-foreground leading-relaxed mb-3">
                   {project.description}
                 </p>
+                <div className="pl-3 border-l-2 border-primary/50 mb-4">
+                  <p className="text-xs font-mono text-primary/80 leading-snug">
+                    {project.highlight}
+                  </p>
+                </div>
                 <div className="flex flex-wrap gap-1.5">
                   {project.tags.map((tag) => (
                     <span

@@ -45,7 +45,7 @@ export default function HeroSection() {
             transition={{ delay: 0.5 }}
             className="text-lg sm:text-xl text-muted-foreground max-w-lg mx-auto lg:mx-0 mb-8"
           >
-            AI Solutions Architect & Senior AI Engineer crafting responsible, impactful AI for the public sector.
+            AI Solutions Architect & Senior AI Engineer building production LLM systems — RAG, agents, and evaluation — that people actually trust in high-stakes, real-world deployments.
           </motion.p>
 
           <motion.div
