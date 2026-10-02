@@ -108,7 +108,7 @@ export default function HeroSection() {
             <img
               src={headshotImg}
               alt="Luke Ertzberger portrait"
-              className="relative z-10 w-full h-full object-cover rounded-full animate-float"
+              className="relative z-10 w-full h-full object-cover rounded-full"
             />
           </div>
         </motion.div>

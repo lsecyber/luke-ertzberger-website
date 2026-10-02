@@ -132,10 +132,6 @@
     font-family: var(--font-mono);
   }
 
-  .animate-float {
-    animation: float 6s ease-in-out infinite;
-  }
-
   .animate-pulse-glow {
     animation: pulse-glow 3s ease-in-out infinite;
   }
@@ -146,11 +142,6 @@
       linear-gradient(90deg, hsl(var(--border) / 0.3) 1px, transparent 1px);
     background-size: 60px 60px;
   }
-}
-
-@keyframes float {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-15px); }
 }
 
 @keyframes pulse-glow {
