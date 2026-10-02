@@ -46,11 +46,15 @@
   </head>
 
   <body>
-    <!-- Hidden Netlify form for build-time detection -->
+    <!-- Hidden Netlify form for build-time detection.
+         The bot-field honeypot lives ONLY here, never in the React form: scraper bots
+         that POST every field they find get rejected by Netlify, while real visitors
+         submit through ContactSection.tsx, which never sends it, so they can't trip it. -->
     <form name="contact" netlify netlify-honeypot="bot-field" hidden>
       <input name="name" />
       <input name="email" />
       <textarea name="message"></textarea>
+      <label>Leave this empty: <input name="bot-field" /></label>
     </form>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
