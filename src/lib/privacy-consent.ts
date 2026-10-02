@@ -135,6 +135,13 @@ export class PrivacyConsentController {
   };
 
   private async resolvePolicy() {
+    // Netlify's edge stamps the policy into the page; only call the API if it's missing.
+    const stamped = document.querySelector<HTMLMetaElement>('meta[name="privacy-region-policy"]')?.content;
+    if (stamped === "opt-in" || stamped === "opt-out") {
+      this.applyPolicy(stamped);
+      return;
+    }
+
     const abort = new AbortController();
     let timer: ReturnType<typeof setTimeout>;
     let policy: Policy = "opt-in";

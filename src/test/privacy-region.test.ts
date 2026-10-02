@@ -1,5 +1,8 @@
 import { describe, expect, it } from "vitest";
+import { readFileSync } from "fs";
+import path from "path";
 import privacyRegion, { config } from "../../netlify/edge-functions/privacy-region";
+import privacyRegionHtml, { config as htmlConfig } from "../../netlify/edge-functions/privacy-region-html";
 
 describe("Netlify regional privacy policy", () => {
   it.each([
@@ -52,5 +55,39 @@ describe("Netlify regional privacy policy", () => {
     }
     expect(await response.json()).toEqual({ policy: "opt-out" });
     expect(config).toEqual({ path: "/api/privacy-region" });
+  });
+});
+
+describe("Netlify HTML region stamp", () => {
+  const page = (body = "<!doctype html><html lang=\"en\"><head><title>x</title></head><body></body></html>", type = "text/html; charset=UTF-8") =>
+    new Response(body, { headers: { "Content-Type": type, "Content-Length": String(body.length), "Cache-Control": "public, max-age=0, must-revalidate" } });
+  const run = (code: string | undefined, response = page()) =>
+    privacyRegionHtml(new Request("https://example.com/"), { geo: { country: { code } }, next: async () => response });
+
+  it.each([["US", "opt-out"], ["DE", "opt-in"], [undefined, "opt-in"]])(
+    "stamps %s visitors with %s inside <head>",
+    async (code, policy) => {
+      const response = await run(code);
+      const html = await response.text();
+      expect(html).toContain(`<head><meta name="privacy-region-policy" content="${policy}"><title>`);
+      expect(response.headers.get("Content-Length")).toBeNull();
+      expect(response.headers.get("Cache-Control")).toBe("private, no-cache");
+      expect(response.headers.get("Netlify-CDN-Cache-Control")).toBe("no-store");
+    },
+  );
+
+  it("passes non-HTML responses through untouched", async () => {
+    const original = page("{}", "application/json");
+    expect(await run("US", original)).toBe(original);
+  });
+
+  it("never runs on form POSTs or API/asset paths", () => {
+    expect(htmlConfig.method).toEqual(["GET"]);
+    expect(htmlConfig.excludedPath).toEqual(expect.arrayContaining(["/api/*", "/assets/*"]));
+    expect(htmlConfig.onError).toBe("bypass");
+  });
+
+  it("is not baked into the static page", () => {
+    expect(readFileSync(path.resolve(__dirname, "../../index.html"), "utf8")).not.toContain("privacy-region-policy");
   });
 });
