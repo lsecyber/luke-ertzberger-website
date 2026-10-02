@@ -1,4 +1,5 @@
 import { useEffect, useRef, useSyncExternalStore } from "react";
+import { Cookie } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { privacyConsent } from "@/lib/privacy-consent";
 
@@ -26,33 +27,13 @@ export default function PrivacyConsent() {
   }
 
   return (
-    <>
-      <div className="fixed bottom-0 left-0 z-50 max-w-full p-3 sm:p-4">
-        {!state.panel && state.storageWarning && (
-          <p role="status" className="mb-2 max-w-sm rounded-md border border-border bg-card p-3 text-sm text-foreground">
-            {state.storageWarning}
-          </p>
-        )}
-        <Button
-          ref={settingsButton}
-          variant="outline"
-          className="min-h-11"
-          aria-expanded={state.panel !== null}
-          aria-controls={state.panel ? "analytics-consent" : undefined}
-          onClick={() => {
-            openedFromSettings.current = true;
-            privacyConsent.openSettings();
-          }}
-        >
-          Cookie settings
-        </Button>
-      </div>
+    <div className="fixed bottom-4 left-4 z-50 flex max-w-[calc(100vw-2rem)] flex-col items-start gap-2">
       {state.panel && (
         <section
           id="analytics-consent"
           ref={panel}
           aria-labelledby="analytics-consent-title"
-          className="fixed inset-x-0 bottom-20 z-50 max-h-[calc(100dvh-6rem)] overflow-y-auto border-y border-border bg-card p-5 sm:mx-4 sm:rounded-xl sm:border sm:p-6"
+          className="max-h-[calc(100dvh-6rem)] w-80 max-w-full overflow-y-auto rounded-xl border border-border bg-card p-4 shadow-lg"
           onKeyDown={(event) => {
             if (event.key === "Escape" && state.panel === "settings") {
               event.preventDefault();
@@ -60,52 +41,69 @@ export default function PrivacyConsent() {
             }
           }}
         >
-          <div className="mx-auto flex max-w-6xl flex-col gap-5 lg:flex-row lg:items-center lg:justify-between">
-            <div className="max-w-2xl">
-              <h2
-                id="analytics-consent-title"
-                ref={heading}
-                tabIndex={-1}
-                className="mb-2 text-lg font-semibold focus-visible:outline focus-visible:outline-2 focus-visible:outline-primary"
-              >
-                {state.panel === "settings" ? "Cookie settings" : usNotice ? "Analytics on this site" : "Your analytics choice"}
-              </h2>
-              <p className="text-sm leading-relaxed text-foreground">
-                {usNotice
-                  ? "This site uses Google Analytics cookies to understand visits and improve the site. Analytics is on by default in the US. You can reject analytics now or change your choice in Cookie settings."
-                  : state.panel === "settings"
-                    ? `Google Analytics cookies help understand visits and improve the site. Analytics is currently ${state.analyticsEnabled ? "on" : "off"}. You can allow or reject it at any time.`
-                    : "May this site use Google Analytics cookies to understand visits and improve the site? Analytics stays off unless you allow it. You can change your choice in Cookie settings."}
-                {" "}Advertising storage and personalization are disabled.
-              </p>
-              {state.policy === null && (
-                <p role="status" className="mt-2 text-sm text-foreground">
-                  Checking your region. No analytics starts without a regional policy or your permission.
-                </p>
-              )}
-              {state.regionWarning && (
-                <p className="mt-2 text-sm text-foreground">{state.regionWarning}</p>
-              )}
-              {state.storageWarning && (
-                <p role="alert" className="mt-3 text-sm font-medium text-foreground">{state.storageWarning}</p>
-              )}
-            </div>
-            <div className="flex shrink-0 flex-col gap-2 sm:flex-row sm:flex-wrap lg:max-w-sm">
-              <Button variant="outline" className="min-h-11" onClick={() => finish(usNotice ? privacyConsent.acknowledge : privacyConsent.allow)}>
-                {usNotice ? "Got it" : "Allow analytics"}
+          <h2
+            id="analytics-consent-title"
+            ref={heading}
+            tabIndex={-1}
+            className="mb-1 text-sm font-semibold focus-visible:outline focus-visible:outline-2 focus-visible:outline-primary"
+          >
+            {state.panel === "settings" ? "Cookie settings" : usNotice ? "Analytics on this site" : "Your analytics choice"}
+          </h2>
+          <p className="text-xs leading-relaxed text-foreground">
+            {usNotice
+              ? "This site uses Google Analytics cookies to understand visits. It's on by default in the US, and you can turn it off anytime."
+              : state.panel === "settings"
+                ? `Google Analytics cookies help understand visits. Analytics is currently ${state.analyticsEnabled ? "on" : "off"}.`
+                : "May this site use Google Analytics cookies to understand visits? Analytics stays off unless you allow it."}
+            {" "}No ads or personalization.
+          </p>
+          {state.policy === null && (
+            <p role="status" className="mt-2 text-xs text-foreground">
+              Checking your region. No analytics starts without a regional policy or your permission.
+            </p>
+          )}
+          {state.regionWarning && (
+            <p className="mt-2 text-xs text-foreground">{state.regionWarning}</p>
+          )}
+          {state.storageWarning && (
+            <p role="alert" className="mt-2 text-xs font-medium text-foreground">{state.storageWarning}</p>
+          )}
+          <div className="mt-3 flex flex-wrap gap-2">
+            <Button variant="outline" size="sm" className="min-h-9 flex-1" onClick={() => finish(usNotice ? privacyConsent.acknowledge : privacyConsent.allow)}>
+              {usNotice ? "Got it" : "Allow analytics"}
+            </Button>
+            <Button variant="outline" size="sm" className="min-h-9 flex-1" onClick={() => finish(privacyConsent.reject)}>
+              Reject analytics
+            </Button>
+            {state.panel === "settings" && (
+              <Button variant="ghost" size="sm" className="min-h-9 w-full" onClick={() => finish(privacyConsent.closeSettings)}>
+                Close settings
               </Button>
-              <Button variant="outline" className="min-h-11" onClick={() => finish(privacyConsent.reject)}>
-                Reject analytics
-              </Button>
-              {state.panel === "settings" && (
-                <Button variant="ghost" className="min-h-11" onClick={() => finish(privacyConsent.closeSettings)}>
-                  Close settings
-                </Button>
-              )}
-            </div>
+            )}
           </div>
         </section>
       )}
-    </>
+      {!state.panel && state.storageWarning && (
+        <p role="status" className="max-w-xs rounded-md border border-border bg-card p-3 text-xs text-foreground">
+          {state.storageWarning}
+        </p>
+      )}
+      <Button
+        ref={settingsButton}
+        variant="outline"
+        size="icon"
+        className="h-11 w-11 rounded-full bg-card shadow-md"
+        aria-label="Cookie settings"
+        title="Cookie settings"
+        aria-expanded={state.panel !== null}
+        aria-controls={state.panel ? "analytics-consent" : undefined}
+        onClick={() => {
+          openedFromSettings.current = true;
+          privacyConsent.openSettings();
+        }}
+      >
+        <Cookie aria-hidden="true" className="h-5 w-5" />
+      </Button>
+    </div>
   );
 }

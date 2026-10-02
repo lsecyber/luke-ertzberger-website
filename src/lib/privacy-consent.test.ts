@@ -418,4 +418,44 @@ describe("regional analytics controller", () => {
     expect(controller.getSnapshot().storageWarning).toBeNull();
     expect(localStorage.getItem(PREFERENCE_KEY)).toBe("rejected");
   });
+
+  describe("edge-stamped region policy", () => {
+    const stamp = (content: string) => {
+      const meta = document.createElement("meta");
+      meta.name = "privacy-region-policy";
+      meta.content = content;
+      document.head.append(meta);
+    };
+    afterEach(() => document.querySelectorAll('meta[name="privacy-region-policy"]').forEach((meta) => meta.remove()));
+
+    it("uses the stamped US policy without a network request or region warning", async () => {
+      stamp("opt-out");
+      await controller.initialize();
+      expect(fetch).not.toHaveBeenCalled();
+      expect(controller.getSnapshot()).toMatchObject({ policy: "opt-out", analyticsEnabled: true, regionWarning: null });
+    });
+
+    it("keeps a stamped US visitor's prior rejection", async () => {
+      localStorage.setItem(PREFERENCE_KEY, "rejected");
+      stamp("opt-out");
+      await controller.initialize();
+      expect(controller.getSnapshot()).toMatchObject({ analyticsEnabled: false, panel: null });
+      expect(scripts()).toHaveLength(0);
+    });
+
+    it("uses the stamped opt-in policy without a network request", async () => {
+      stamp("opt-in");
+      await controller.initialize();
+      expect(fetch).not.toHaveBeenCalled();
+      expect(controller.getSnapshot()).toMatchObject({ policy: "opt-in", analyticsEnabled: false, panel: "notice" });
+    });
+
+    it.each(["", "US", "opt-out "])("ignores a malformed stamp (%j) and falls back to the API", async (content) => {
+      stamp(content);
+      vi.mocked(fetch).mockResolvedValue(response("opt-out"));
+      await controller.initialize();
+      expect(fetch).toHaveBeenCalledTimes(1);
+      expect(controller.getSnapshot().policy).toBe("opt-out");
+    });
+  });
 });

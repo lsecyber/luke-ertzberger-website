@@ -17,6 +17,7 @@ export default function ContactSection() {
 
     setStatus("sending");
 
+    // Never append the "bot-field" honeypot here (see index.html) so real visitors can't trip it.
     const formData = new URLSearchParams();
     formData.append("form-name", "contact");
     formData.append("name", name);
@@ -28,14 +29,15 @@ export default function ContactSection() {
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
       body: formData.toString(),
     })
-      .then(() => {
+      .then((res) => {
+        if (!res.ok) throw new Error(`Form submission failed: ${res.status}`);
         setStatus("sent");
         setForm({ name: "", email: "", message: "" });
         setTimeout(() => setStatus("idle"), 3000);
       })
       .catch(() => {
+        // Keep the error (and the visitor's text) on screen until they retry.
         setStatus("error");
-        setTimeout(() => setStatus("idle"), 3000);
       });
   };
 
@@ -128,6 +130,17 @@ export default function ContactSection() {
             {status === "sent" ? "Sent!" : status === "error" ? "Error, try again" : status === "sending" ? "Sending…" : "Send Message"}
             <Send size={16} />
           </button>
+          <p role="status" aria-live="polite" className="text-sm text-muted-foreground">
+            {status === "error" && (
+              <>
+                Your message didn't go through. Please try again, or reach me on{" "}
+                <a href="https://linkedin.com/in/lukeertzberger" target="_blank" rel="noopener noreferrer" className="text-primary underline">
+                  LinkedIn
+                </a>
+                .
+              </>
+            )}
+          </p>
         </motion.form>
 
         {/* Social links */}
