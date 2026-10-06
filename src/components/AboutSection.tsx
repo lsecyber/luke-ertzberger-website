@@ -6,7 +6,7 @@ import GoogleLogo from "@/components/GoogleLogo";
 
 const highlights: { icon: LucideIcon | "google"; label: string; desc: string }[] = [
   { icon: "google", label: "Field Solutions Architect, GenAI", desc: "Google Public Sector" },
-  { icon: Briefcase, label: "Previously", desc: "NC Dept. of IT · Synply" },
+  { icon: Briefcase, label: "Previously", desc: "NC Dept. of IT" },
   { icon: GraduationCap, label: "B.S. Computer Science", desc: "Regent University" },
   { icon: Music, label: "Musician", desc: "Since age 4" },
 ];
@@ -52,7 +52,7 @@ export default function AboutSection() {
               Before Google, I was an AI Solutions Architect at the North Carolina Department of Information
               Technology's Office of AI &amp; Policy, where I shipped production GenAI systems for the state —
               including an AI plate-screening tool that saves the NC DMV an estimated 5,000+ staff hours a
-              year. In parallel, I was a Senior AI Engineer at Synply, building production RAG pipelines,
+              year. At Synply, I was a Senior AI Engineer building production RAG pipelines,
               multi-step agents, and MCP-integrated tooling for a regulated fintech platform. I also founded
               Triune Creative, shipping AI-enabled solutions for 10+ organizations.
             </p>
