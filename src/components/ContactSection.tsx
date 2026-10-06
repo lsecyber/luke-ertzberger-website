@@ -174,6 +174,9 @@ export default function ContactSection() {
         <p className="text-xs text-muted-foreground font-mono">
           © {new Date().getFullYear()} Luke Ertzberger. All rights reserved.
         </p>
+        <p className="text-xs text-muted-foreground font-mono mt-2">
+          Views are my own and don't represent Google. Google and the Google logo are trademarks of Google LLC.
+        </p>
       </div>
     </section>
   );

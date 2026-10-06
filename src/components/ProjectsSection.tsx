@@ -30,14 +30,14 @@ const projects = [
   {
     title: "Allo — Synply's AI Assistant",
     category: "AI / SaaS",
-    description: "Leading the design and implementation of Allo, Synply's AI assistant — building on the existing platform to make it AI-native from the ground up.",
+    description: "Led the design and implementation of Allo, Synply's AI assistant — building on the existing platform to make it AI-native from the ground up.",
     highlight: "In production at a funded fintech SaaS",
     tags: ["RAG", "Agents", "MCP", "Guardrails"],
     link: "https://synply.io/",
     color: "from-glow-pink/20 to-glow-cyan/20",
     problem: "Synply had a powerful platform but users were underutilizing its capabilities. The product needed an intelligent layer that could guide users, automate workflows, and make the platform feel effortlessly smart.",
-    approach: "Helping guide the vision and implementation of Allo, Synply's AI assistant, building it on top of the existing UI and leading the effort to make the entire platform AI-native — not just bolting on a chatbot, but deeply integrating intelligence into every workflow.",
-    results: "Allo is actively transforming how users interact with Synply, reducing friction and surfacing capabilities users didn't know existed. The platform is evolving from a tool you operate into one that works with you.",
+    approach: "Helped guide the vision and implementation of Allo, Synply's AI assistant, building it on top of the existing UI and led the effort to make the entire platform AI-native — not just bolting on a chatbot, but deeply integrating intelligence into every workflow.",
+    results: "Allo transformed how users interact with Synply, reducing friction and surfacing capabilities users didn't know existed. The platform evolved from a tool you operate into one that works with you.",
   },
   {
     title: "Spiritual Twist Productions",

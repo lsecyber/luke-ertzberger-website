@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { ArrowDown, Github, Linkedin, Mail } from "lucide-react";
 import headshotImg from "@/assets/luke-headshot.png";
 import ParticleConstellation from "@/components/ParticleConstellation";
+import GoogleLogo from "@/components/GoogleLogo";
 
 export default function HeroSection() {
   return (
@@ -42,10 +43,22 @@ export default function HeroSection() {
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.4 }}
+            className="inline-flex items-center gap-2.5 pl-1.5 pr-4 py-1.5 mb-6 rounded-full border border-border bg-secondary/60 text-sm font-medium text-foreground"
+          >
+            <GoogleLogo size={14} />
+            <span>
+              Field Solutions Architect, GenAI <span className="text-muted-foreground">at</span> Google
+            </span>
+          </motion.p>
+
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.5 }}
             className="text-lg sm:text-xl text-muted-foreground max-w-lg mx-auto lg:mx-0 mb-8"
           >
-            AI Solutions Architect & Senior AI Engineer building production LLM systems — RAG, agents, and evaluation — that people actually trust in high-stakes, real-world deployments.
+            On Google Public Sector's Rapid Innovation Team, I build AI prototypes that show federal civilian agencies the art of the possible — and the production LLM systems behind them that people actually trust.
           </motion.p>
 
           <motion.div
