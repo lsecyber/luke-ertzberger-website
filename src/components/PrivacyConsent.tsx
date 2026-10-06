@@ -27,13 +27,13 @@ export default function PrivacyConsent() {
   }
 
   return (
-    <div className="fixed bottom-4 left-4 z-50 flex max-w-[calc(100vw-2rem)] flex-col items-start gap-2">
+    <div className="fixed bottom-3 right-3 z-50 flex max-w-[calc(100vw-1.5rem)] flex-col items-end gap-2">
       {state.panel && (
         <section
           id="analytics-consent"
           ref={panel}
           aria-labelledby="analytics-consent-title"
-          className="max-h-[calc(100dvh-6rem)] w-80 max-w-full overflow-y-auto rounded-xl border border-border bg-card p-4 shadow-lg"
+          className="max-h-[calc(100dvh-5rem)] w-64 max-w-full overflow-y-auto rounded-lg border border-border bg-card p-3 shadow-lg"
           onKeyDown={(event) => {
             if (event.key === "Escape" && state.panel === "settings") {
               event.preventDefault();
@@ -45,16 +45,16 @@ export default function PrivacyConsent() {
             id="analytics-consent-title"
             ref={heading}
             tabIndex={-1}
-            className="mb-1 text-sm font-semibold focus-visible:outline focus-visible:outline-2 focus-visible:outline-primary"
+            className="mb-1 text-xs font-semibold focus-visible:outline focus-visible:outline-2 focus-visible:outline-primary"
           >
             {state.panel === "settings" ? "Cookie settings" : usNotice ? "Analytics on this site" : "Your analytics choice"}
           </h2>
-          <p className="text-xs leading-relaxed text-foreground">
+          <p className="text-xs leading-snug text-foreground">
             {usNotice
-              ? "This site uses Google Analytics cookies to understand visits. It's on by default in the US, and you can turn it off anytime."
+              ? "This site uses Google Analytics cookies. On by default in the US; turn it off anytime."
               : state.panel === "settings"
-                ? `Google Analytics cookies help understand visits. Analytics is currently ${state.analyticsEnabled ? "on" : "off"}.`
-                : "May this site use Google Analytics cookies to understand visits? Analytics stays off unless you allow it."}
+                ? `Google Analytics is currently ${state.analyticsEnabled ? "on" : "off"}.`
+                : "Allow Google Analytics cookies? Off unless you allow it."}
             {" "}No ads or personalization.
           </p>
           {state.policy === null && (
@@ -68,23 +68,23 @@ export default function PrivacyConsent() {
           {state.storageWarning && (
             <p role="alert" className="mt-2 text-xs font-medium text-foreground">{state.storageWarning}</p>
           )}
-          <div className="mt-3 flex flex-wrap gap-2">
-            <Button variant="outline" size="sm" className="min-h-9 flex-1" onClick={() => finish(usNotice ? privacyConsent.acknowledge : privacyConsent.allow)}>
-              {usNotice ? "Got it" : "Allow analytics"}
+          <div className="mt-2 flex flex-wrap gap-1.5">
+            <Button variant="outline" size="sm" className="h-8 flex-1 px-2 text-xs" aria-label={usNotice ? undefined : "Allow analytics"} onClick={() => finish(usNotice ? privacyConsent.acknowledge : privacyConsent.allow)}>
+              {usNotice ? "Got it" : "Allow"}
             </Button>
-            <Button variant="outline" size="sm" className="min-h-9 flex-1" onClick={() => finish(privacyConsent.reject)}>
-              Reject analytics
+            <Button variant="outline" size="sm" className="h-8 flex-1 px-2 text-xs" aria-label="Reject analytics" onClick={() => finish(privacyConsent.reject)}>
+              Reject
             </Button>
             {state.panel === "settings" && (
-              <Button variant="ghost" size="sm" className="min-h-9 w-full" onClick={() => finish(privacyConsent.closeSettings)}>
-                Close settings
+              <Button variant="ghost" size="sm" className="h-8 w-full px-2 text-xs" aria-label="Close settings" onClick={() => finish(privacyConsent.closeSettings)}>
+                Close
               </Button>
             )}
           </div>
         </section>
       )}
       {!state.panel && state.storageWarning && (
-        <p role="status" className="max-w-xs rounded-md border border-border bg-card p-3 text-xs text-foreground">
+        <p role="status" className="max-w-64 rounded-md border border-border bg-card p-2 text-xs text-foreground">
           {state.storageWarning}
         </p>
       )}
@@ -92,7 +92,7 @@ export default function PrivacyConsent() {
         ref={settingsButton}
         variant="outline"
         size="icon"
-        className="h-11 w-11 rounded-full bg-card shadow-md"
+        className="h-9 w-9 rounded-full bg-card shadow-md"
         aria-label="Cookie settings"
         title="Cookie settings"
         aria-expanded={state.panel !== null}
@@ -102,7 +102,7 @@ export default function PrivacyConsent() {
           privacyConsent.openSettings();
         }}
       >
-        <Cookie aria-hidden="true" className="h-5 w-5" />
+        <Cookie aria-hidden="true" className="h-4 w-4" />
       </Button>
     </div>
   );
