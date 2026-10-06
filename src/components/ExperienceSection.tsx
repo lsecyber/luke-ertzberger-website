@@ -1,19 +1,35 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
+import GoogleLogo from "@/components/GoogleLogo";
 
-const experiences = [
+const experiences: {
+  role: string;
+  company: string;
+  period: string;
+  description: string;
+  tags: string[];
+  google?: boolean;
+}[] = [
+  {
+    role: "Field Solutions Architect, GenAI",
+    company: "Google Public Sector · Rapid Innovation Team",
+    period: "Sept 2026 – Present",
+    description: "Build AI prototypes for federal civilian agencies that prove the art of the possible with generative AI — turning mission problems into working demos fast, then mapping a credible path from prototype to production on Google Cloud. Partner with agency stakeholders on agents, evaluation, security, and responsible AI.",
+    tags: ["Gemini", "Vertex AI", "AI Agents", "Rapid Prototyping", "Federal Civilian"],
+    google: true,
+  },
   {
     role: "AI Solutions Architect",
     company: "NC Department of Information Technology",
-    period: "Sept 2025 – Present",
-    description: "Design, build, and deploy production GenAI applications for state government — moving from ambiguous agency pain points to prototypes, production systems, and measurable value. Built an AI plate-screening tool saving the NC DMV an estimated 5,000+ staff hours a year, and a conversational analytics app processing 5,000+ survey responses per cycle. Advise 10+ agencies on model selection, evaluation, security, and responsible AI.",
+    period: "Sept 2025 – Sept 2026",
+    description: "Designed, built, and deployed production GenAI applications for state government — moving from ambiguous agency pain points to prototypes, production systems, and measurable value. Built an AI plate-screening tool saving the NC DMV an estimated 5,000+ staff hours a year, and a conversational analytics app processing 5,000+ survey responses per cycle. Advised 10+ agencies on model selection, evaluation, security, and responsible AI.",
     tags: ["LLMs", "AI Agents", "Vertex AI", "Evaluation", "Responsible AI"],
   },
   {
     role: "Senior AI Engineer",
     company: "Synply",
-    period: "Nov 2025 – Present",
-    description: "Lead applied AI for a regulated fintech SaaS product — building production RAG pipelines, multi-step agents, chat experiences, and MCP-integrated tooling. Run assistant safety and trust testing, surfacing prompt-injection, scope-boundary, and tool-disclosure risks and translating them into prioritized guardrails.",
+    period: "Nov 2025 – Sept 2026",
+    description: "Led applied AI for a regulated fintech SaaS product — building production RAG pipelines, multi-step agents, chat experiences, and MCP-integrated tooling. Ran assistant safety and trust testing, surfacing prompt-injection, scope-boundary, and tool-disclosure risks and translating them into prioritized guardrails.",
     tags: ["Python", "RAG", "Agents", "MCP", "Guardrails"],
   },
   {
@@ -93,7 +109,10 @@ export default function ExperienceSection() {
                     <h3 className="font-semibold text-foreground text-lg">{exp.role}</h3>
                     <span className="font-mono text-xs text-muted-foreground">{exp.period}</span>
                   </div>
-                  <p className="text-sm text-primary font-medium mb-3">{exp.company}</p>
+                  <p className="text-sm text-primary font-medium mb-3 inline-flex items-center gap-2">
+                    {exp.google && <GoogleLogo size={12} />}
+                    {exp.company}
+                  </p>
                   <p className="text-sm text-muted-foreground leading-relaxed mb-4">{exp.description}</p>
                   <div className="flex flex-wrap gap-2">
                     {exp.tags.map((tag) => (

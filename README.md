@@ -2,13 +2,13 @@
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/752e2e16-0259-4d14-95e5-0d8fd0180f81/deploy-status)](https://app.netlify.com/sites/lukeertzberger/deploys)
 
-Personal portfolio site for Luke Ertzberger — AI Solutions Architect & Senior AI Engineer. The main site is a React + TypeScript single-page app built with Vite, styled with Tailwind CSS and shadcn/ui, and animated with Framer Motion.
+Personal portfolio site for Luke Ertzberger — Field Solutions Architect, GenAI at Google Public Sector. The main site is a React + TypeScript single-page app built with Vite, styled with Tailwind CSS and shadcn/ui, and animated with Framer Motion.
 
 Live site: https://lukeertzberger.com
 
 ## Highlights
 
-- Responsive portfolio focused on AI solutions architecture, engineering, and public sector work
+- Responsive portfolio focused on AI solutions architecture, rapid AI prototyping, and public sector work
 - Sections for hero, about, experience, skills, projects, testimonials, and contact
 - Netlify-powered contact form submission flow
 - Google Analytics integration
