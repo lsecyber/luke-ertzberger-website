@@ -4,8 +4,7 @@ import { useRef } from "react";
 const stats = [
   { value: "25,000+", label: "Hours saved for organizations" },
   { value: "5+", label: "Years shipping production software" },
-  { value: "10+", label: "Organizations & clients served" },
-  { value: "3", label: "Sectors: government · fintech · private" },
+  { value: "40% → 90%+", label: "AI extraction accuracy lifted" },
 ];
 
 export default function StatsStrip() {
@@ -16,7 +15,7 @@ export default function StatsStrip() {
     <section ref={ref} className="relative py-12 border-y border-border/40">
       <div className="absolute inset-0 bg-secondary/40" />
       <div className="relative z-10 max-w-4xl mx-auto px-6">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-8">
           {stats.map((stat, i) => (
             <motion.div
               key={stat.label}
